@@ -28,7 +28,7 @@ public class WSTester
 	public static void main(String args[])
 	{
 		try
-		{
+		{ 
 			System.out.println("Starting");
 
 			int number = new Random(System.currentTimeMillis()).nextInt(111111);
