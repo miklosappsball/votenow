@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:feed="http://votenow.hoplitasoft.hu/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <feed:addAnswer>
+         <arg0><![CDATA[%s]]></arg0>
+         <arg1><![CDATA[%s]]></arg1>
+         <arg2><![CDATA[%s]]></arg2>
+         <arg3><![CDATA[%s]]></arg3>
+         <arg4><![CDATA[%s]]></arg4>
+         <arg5><![CDATA[%s]]></arg5>
+      </feed:addAnswer>
+   </soapenv:Body>
+</soapenv:Envelope>
