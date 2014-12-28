@@ -87,7 +87,7 @@
 </target>
 
 <target name="compile" depends="init" description="compile the source ">
-	<javac srcdir="${src}" destdir="${build}/WEB-INF/classes" includeantruntime="false" debug="true">
+	<javac srcdir="${src}" destdir="${build}/WEB-INF/classes" includeantruntime="false" debug="true" target="1.7" source="1.7">
 		<classpath refid="master-classpath"/>
 	</javac>
 	<copy todir="${build}">
