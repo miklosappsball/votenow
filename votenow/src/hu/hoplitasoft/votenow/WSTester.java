@@ -79,7 +79,7 @@ public class WSTester
 			e.printStackTrace();
 		}
 		return inputStreamToString(getDataFromUrlAsInputStream(BASEURL+"/votenowWSDL", soapMessage));
-	}
+	} 
 
 
 	private static String getAnswerFromString(String s) 
