@@ -22,8 +22,8 @@ import org.json.JSONObject;
 
 public class WSTester 
 {
-	public final static String BASEURL = "http://localhost:8080/votenow";
-	// public final static String BASEURL = "http://ratenow-appsball.rhcloud.com/";
+	// public final static String BASEURL = "http://localhost:8080/votenow";
+	public final static String BASEURL = "http://votenow-appsball2.rhcloud.com/";
 	
 	public static void main(String args[])
 	{
@@ -66,8 +66,6 @@ public class WSTester
 		{
 			e.printStackTrace();
 		}
-
-
 	}
 	
 
