@@ -13,7 +13,7 @@ public class QuestionCloser
 {
 	private static Timer timer = new Timer();
 	private static boolean started = false;
-	private final static int MAX_POLL_TIME = 60;
+	private final static int MAX_POLL_TIME = 20;
 	private static boolean stop = false;
 
 	public static void findNextQuestionToCloseStart()
@@ -32,6 +32,7 @@ public class QuestionCloser
 	{
 		synchronized (timer) 
 		{
+			System.out.println("findNextQuestionToClose!!!");
 			Timestamp t = new Timestamp(System.currentTimeMillis()+1000*MAX_POLL_TIME);
 			List<Timestamp> list = DBUtil.findNextQuestions();
 			if(list.size()>0) 
@@ -40,12 +41,14 @@ public class QuestionCloser
 				if(t.after(t2)) t = t2;
 			}
 			
+			System.out.println("next time: "+t);
 			timer.schedule(new TimerTask() {
 				@Override
 				public void run() 
 				{
 					if(!stop)
 					{
+						System.out.println("Running!!!");
 						DBUtil.closeAlreadyFinishedQuestions();
 						findNextQuestionToClose();
 					}

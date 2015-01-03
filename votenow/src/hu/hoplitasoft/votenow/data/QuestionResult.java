@@ -14,9 +14,26 @@ public class QuestionResult {
 	private String title;
 	private String email;
 	private long device_id;
-	private long[] rates;
-	List<List<String>> messages;
+	private boolean multichoice;
+	private boolean anonymous;
+	List<String> choices;
+	List<OneAnswer> oneAnswers;
 	
+	
+	
+	
+	public List<OneAnswer> getOneAnswers() {
+		return oneAnswers;
+	}
+	public void setOneAnswers(List<OneAnswer> oneAnswers) {
+		this.oneAnswers = oneAnswers;
+	}
+	public List<String> getChoices() {
+		return choices;
+	}
+	public void setChoices(List<String> choices) {
+		this.choices = choices;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -35,164 +52,139 @@ public class QuestionResult {
 	public void setDevice_id(long device_id) {
 		this.device_id = device_id;
 	}
-	public long[] getRates() {
-		return rates;
+	public boolean isMultichoice() {
+		return multichoice;
 	}
-	public void setRates(long[] rates) {
-		this.rates = rates;
+	public void setMultichoice(boolean multichoice) {
+		this.multichoice = multichoice;
 	}
-	public List<List<String>> getMessages() {
-		return messages;
+	public boolean isAnonymous() {
+		return anonymous;
 	}
-	public void setMessages(List<List<String>> messages) {
-		this.messages = messages;
+	public void setAnonymous(boolean anonymous) {
+		this.anonymous = anonymous;
+	}
+
+	public List<String> names = new ArrayList<String>();
+	public List<String> comments = new ArrayList<String>();
+	
+	public class AnswerCollection implements Comparable<AnswerCollection>
+	{
+		public String choice = null;
+		public List<String> names = new ArrayList<String>();
+		public List<String> comments = new ArrayList<String>();
+		public String percentage = null;
+		public int number = 0;
+		
+		@Override
+		public int compareTo(AnswerCollection o) {
+			return new Integer(o.number).compareTo(new Integer(number));
+		}
 	}
 	
-	private String modus;
-	private long numberOfRates;
-	private String avarage;
-	private String median;
-	private String sdeviation;
-	private List<String> percentages;
-	
-	public List<String> getPercentages() {
-		return percentages;
-	}
-	
-	public String getMedian() {
-		return median;
-	}
-	public String getModus() {
-		return modus;
-	}
-	public long getNumberOfRates() {
-		return numberOfRates;
-	}
-	public String getAvarage() {
-		return avarage;
-	}
-	public String getSdeviation() {
-		return sdeviation;
-	}
+	List<AnswerCollection> answerCollection = new ArrayList<QuestionResult.AnswerCollection>();
 	
 	public void calculate()
 	{
-
-		long maximum = -1;
-		modus = "";
-		
-		long sum = 0;
-		
-		for(int i=0;i<rates.length;i++)
+		for(int i = 0; i<choices.size();i++)
 		{
-			sum += rates[i]*(i+1);
-			numberOfRates += rates[i];
-			
-			if(maximum == rates[i])
-			{
-				modus += ", "+(i+1);
-			}
-			if(maximum < rates[i])
-			{
-				maximum = rates[i];
-				modus = ""+(i+1);
-			}
+			AnswerCollection ac = new AnswerCollection();
+			answerCollection.add(ac);
+			ac.choice = getChoices().get(i);
 		}
 		
-		median = "";
-		long now = 0;
-		long find = (numberOfRates+1) / 2;
-		boolean two = numberOfRates%2 == 0;
-		for(int i=0;i<rates.length;i++)
+		for(OneAnswer oa : oneAnswers)
 		{
-			now += rates[i];
-			if(now >= find)
+			for(int i=0;i<oa.getAnswers().length();i++)
 			{
-				median = ""+(i+1)+".0";
-				if(two && now == find)
+				if(oa.getAnswers().charAt(i) != '0')
 				{
-					for(int j=i+1;j<rates.length;j++)
+					AnswerCollection ac = answerCollection.get(i);
+					ac.number++;
+					if(!anonymous)
 					{
-						if(rates[j] != 0)
-						{
-							median = String.format("%.1f", 1.0 * (i+j+2)/2.0);
-							break;
-						}
+						ac.names.add(oa.getName());
+					}
+					
+					if(!multichoice)
+					{
+						ac.comments.add(oa.getText());
+					}
+					else
+					{
+						comments.add(oa.getText());
+						if(!anonymous) names.add(oa.getName());
 					}
 				}
-				break;
 			}
 		}
 		
-		double avg = 1.0f * sum / numberOfRates;
-		avarage = String.format("%.1f", avg);
+		java.util.Collections.sort(answerCollection);
 		
-		
-		double sdevt = 0.0f;
-		if(numberOfRates > 1)
+		for(AnswerCollection ac: answerCollection)
 		{
-			for(int i=0;i<rates.length;i++)
-			{
-				sdevt += (i+1-avg)*(i+1-avg) * rates[i];
-			}
-			sdevt = Math.sqrt(sdevt/(numberOfRates-1));
+			ac.percentage = String.format("%.2f%%", 100.0 * ac.number / oneAnswers.size());  
+			
+			System.out.println(ac.choice);
+			System.out.println("\t"+ac.percentage);
+			System.out.println("\t"+ac.number);
+			System.out.println("\t"+ac.names);
 		}
-		sdeviation = String.format("%.1f", sdevt);
 		
-		percentages = new ArrayList<String>();
-		
-		if(numberOfRates == 0)
-		{
-			avarage = "-";
-			median = "-";
-			modus = "-";
-			sdeviation = "-";
-			for(int i=0;i<rates.length;i++) percentages.add("0.0");
-		}
-		else
-		{	
-			for(long rate : rates)
-			{
-				percentages.add(String.format("%.1f", 100.0*rate/numberOfRates));
-			}
-		}
 	}
 	
 	public String createContentString() 
 	{
 		try
 		{
-		JSONObject json = new JSONObject();
-		
-		json.put("modus", modus);
-		json.put("title", title);
-		json.put("numberOfRates", ""+numberOfRates);
-		json.put("avarage", avarage);
-		json.put("median", median);
-		json.put("sdeviation", ""+sdeviation);
-		
-		JSONArray ratesArray = new JSONArray();
-		int i=0;
-		for(long rate: rates)
-		{
-			JSONObject obj = new JSONObject();
-			obj.put("rate", rate);
-			obj.put("percentage", percentages.get(i));
-			ratesArray.put(obj);
-			i++;
-		}
-		json.put("rates", ratesArray);
-		
-		JSONArray messagesArray = new JSONArray();
-		for(List<String> list: messages)
-		{
-			JSONArray array = new JSONArray();
-			for(String str: list) array.put(str);
-			messagesArray.put(array);
-		}
-		json.put("messages", messagesArray);
-		
-		return json.toString();
+			JSONObject json = new JSONObject();
+			json.put("title", title);
+			json.put("numberOfRates", ""+oneAnswers.size());
+			json.put("multichoice", multichoice);
+			json.put("anonym", anonymous);
+			
+			{
+				int length = Math.max(comments.size(), names.size());
+				if(length > 0)
+				{
+					JSONArray comments_j = new JSONArray();
+					for(int i=0;i<length;i++)
+					{
+						JSONObject object = new JSONObject();
+						if(names.size()>i) object.put("name", names.get(i));
+						if(comments.size()>i) object.put("comment", comments.get(i));
+						comments_j.put(object);
+					}
+					json.put("comments", comments_j);
+				}
+			}
+			
+			JSONArray jsonarray = new JSONArray();
+			for(AnswerCollection ac : answerCollection)
+			{
+				JSONObject acj = new JSONObject();
+				jsonarray.put(acj);
+				acj.put("choice", ac.choice);
+				acj.put("number", ac.number);
+				acj.put("percentage", ac.percentage);
+				
+				int length = Math.max(ac.comments.size(), ac.names.size());
+				if(length > 0)
+				{
+					JSONArray comments_j = new JSONArray();
+					for(int i=0;i<length;i++)
+					{
+						JSONObject object = new JSONObject();
+						if(ac.names.size()>i) object.put("name", ac.names.get(i));
+						if(ac.comments.size()>i) object.put("comment", ac.comments.get(i));
+						comments_j.put(object);
+					}
+					acj.put("comments", comments_j);
+				}
+			}
+			json.put("choices", jsonarray);
+			
+			return json.toString(4);
 		}
 		catch(Exception e)
 		{
@@ -201,6 +193,7 @@ public class QuestionResult {
 		}
 		return "";
 	}
+	
 	
 	
 }

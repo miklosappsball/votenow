@@ -22,8 +22,8 @@ import org.json.JSONObject;
 
 public class WSTester 
 {
-	// public final static String BASEURL = "http://localhost:8080/votenow";
-	public final static String BASEURL = "http://votenow-appsball2.rhcloud.com/";
+	public final static String BASEURL = "http://localhost:8080/votenow";
+	// public final static String BASEURL = "http://votenow-appsball2.rhcloud.com/";
 	
 	public static void main(String args[])
 	{
@@ -39,8 +39,10 @@ public class WSTester
 			number = new Random(System.currentTimeMillis()).nextInt(3);
 			System.out.println("Waiting for: "+number);
 			Thread.sleep(1000*number);
-
-			String questionData = getAnswerFromString(createGetQuestion(qcode, "IOS", "IOS_DEVICE_ID_1"));
+			
+			String questionAnswer = createGetQuestion(qcode, "IOS", "IOS_DEVICE_ID_1");
+			System.out.println(questionAnswer);
+			String questionData = getAnswerFromString(questionAnswer);
 			System.out.println(questionData);
 			JSONObject obj = new JSONObject(questionData);
 			System.out.println("Title: "+obj.getString(Fields.QUESTION.toString()));
@@ -59,16 +61,43 @@ public class WSTester
 			String rate = "1";
 			for(int i=1; i < array.length();i++) rate += "0";
 			
-			String s = createAnswer(qcode, rate, "name: ", "message: ", "IOS", "IOS_DEVICE_ID_1");
+			String s = createAnswer(qcode, rate, "Béla", "message by Béla", "IOS", "IOS_DEVICE_ID_1");
+			createAnswer(qcode, "00100", "Andris", "message by Andris", "IOS", "IOS_DEVICE_ID_2");
+			createAnswer(qcode, "00010", "Csilla", "message by Csilla", "IOS", "IOS_DEVICE_ID_3");
+			createAnswer(qcode, rate, "Anna", "message by Anna", "IOS", "IOS_DEVICE_ID_4");
+			System.out.println(s);
 			System.out.println(getAnswerFromString(s));
 			
-		}catch(Exception e)
+			System.out.println("0%                                                       100%");
+			for(int i=0;i<60;i++)
+			{
+				System.out.print('.');
+				// Thread.sleep(250);
+				Thread.sleep(25);
+			}
+			System.out.println();
+			String json = getAnswerFromString(createGetQuestionResult(qcode, "IOS_DEVICE_ID_1"));
+			System.out.println(json);
+			System.out.println("Generated qcode: "+qcode);
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
 	
-
+	private static String createGetQuestionResult(String code, String deviceid) {
+		String soapMessage = null;
+		try {
+			soapMessage = inputStreamToString(new FileInputStream("soap-getquestionresult.xml"));
+			soapMessage = String.format(soapMessage, code, deviceid);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inputStreamToString(getDataFromUrlAsInputStream(BASEURL+"/votenowWSDL", soapMessage));
+	} 
+	
 	private static String createGetQuestion(String answer, String devicetype, String deviceid) {
 		String soapMessage = null;
 		try {
@@ -97,13 +126,13 @@ public class WSTester
 			soapMessage = inputStreamToString(new FileInputStream("soap-question.xml"));
 			
 			JSONObject obj = new JSONObject();
-			obj.put(Fields.EMAIL.toString(), "konfar.andras@gmail.comt");
+			obj.put(Fields.EMAIL.toString(), "konfar.andras@gmail.com");
 			obj.put(Fields.DEVICE_ID.toString(), deviceid);
 			obj.put(Fields.DEVICE_TYPE.toString(), devicetype);
 			obj.put(Fields.QUESTION.toString(), "Title << \" \' \\ ? "+i);
-			obj.put(Fields.MULTICHOICE.toString(), false);
-			obj.put(Fields.ANONYMOUS.toString(), true);
-			obj.put(Fields.TIME_FN.toString(), 180);
+			obj.put(Fields.MULTICHOICE.toString(), true);
+			obj.put(Fields.ANONYMOUS.toString(), false);
+			obj.put(Fields.TIME_FN.toString(), 15);
 			
 			JSONArray array = new JSONArray();
 			array.put("Choice 1 (\""+i+"\")");
@@ -116,6 +145,7 @@ public class WSTester
 			soapMessage = String.format(soapMessage, obj.toString());
 			
 			System.out.println(soapMessage);
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -130,6 +160,7 @@ public class WSTester
 		try {
 			soapMessage = inputStreamToString(new FileInputStream("soap-answer.xml"));
 			soapMessage = String.format(soapMessage, code, rate, name, message, devicetype, deviceid);
+			System.out.println(soapMessage);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -141,8 +172,8 @@ public class WSTester
 	private static InputStream getDataFromUrlAsInputStream(String url,
 			String soapMessage) {
 		
-		try {
-			
+		try 
+		{	
 			HttpParams parameters = new BasicHttpParams();
 			HttpConnectionParams.setConnectionTimeout(parameters, 20000);
 			HttpConnectionParams.setSoTimeout(parameters, 20000);

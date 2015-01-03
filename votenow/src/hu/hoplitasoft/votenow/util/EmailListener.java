@@ -107,6 +107,10 @@ public class EmailListener  implements ServletContextListener {
 	{
 		String s = emailTemplate;
 		
+		System.out.println("XXXXXX");
+		result.createContentString();
+		
+		/*
 		s = s.replace("{question}", result.getTitle());
 		s = s.replace("{total}", ""+result.getNumberOfRates());
 		s = s.replace("{avarage}", result.getAvarage());
@@ -140,7 +144,7 @@ public class EmailListener  implements ServletContextListener {
 		}
 		
 		s = s.replace("{messages}", ""+sb.toString());
-		
+		*/
 		s += createMessageEnding();
 		
 		return s;

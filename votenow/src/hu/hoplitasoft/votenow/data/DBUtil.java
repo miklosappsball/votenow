@@ -371,7 +371,7 @@ public class DBUtil {
 	public static QuestionResult getQuestionResult(String code) {
 		try
 		{
-			PreparedStatement statement = getConnection().prepareStatement("SELECT title,email,device_id,id FROM question where code=?;");
+			PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM question where code=?;");
 			statement.setString(1, code);
 			ResultSet resultset = statement.executeQuery();
 			if(!resultset.first())
@@ -383,36 +383,38 @@ public class DBUtil {
 			result.setTitle(resultset.getString("title"));
 			result.setEmail(resultset.getString("email"));
 			result.setDevice_id(resultset.getLong("device_id"));
+			result.setMultichoice(resultset.getBoolean("multichoice"));
+			result.setAnonymous(resultset.getBoolean("anonym"));
 			long qid = resultset.getLong("id");
 			statement.close();
+			
+			List<String> choices = new ArrayList<String>();
+			statement = getConnection().prepareStatement("SELECT * FROM chosable WHERE question_id = ? ORDER BY id;");
+			statement.setLong(1, qid);
+			resultset = statement.executeQuery();
+			while(resultset.next())
+			{
+				choices.add(resultset.getString("text"));
+			}
+			statement.close();
+			result.setChoices(choices);
 			
 			statement = getConnection().prepareStatement("SELECT * FROM answer WHERE question_id = ?;");
 			statement.setLong(1, qid);
 			
+			List<OneAnswer> answers = new ArrayList<OneAnswer>();
 			ResultSet rs = statement.executeQuery();
-			long [] rates = new long[NUMBER_OF_RATE_SELECTION];
-			List<List<String>> list = new ArrayList<List<String>>();
-			for(int i=0;i<NUMBER_OF_RATE_SELECTION;i++)
-			{
-				list.add(new ArrayList<String>());
-			}
 			while(rs.next())
 			{
-				int rate = rs.getInt("rate");
-				if(rate<NUMBER_OF_RATE_SELECTION && rate>=0)
-				{
-					rates[rate]++;
-					String msg = rs.getString("message");
-					if(msg != null && msg.length()>0)
-					{
-						Logger.info("Adding one line with: "+msg+"  : "+rate);
-						list.get(rate).add(msg);
-					}
-				}
+				OneAnswer oa = new OneAnswer();
+				answers.add(oa);
+				oa.setText(rs.getString("message"));
+				oa.setAnswers(rs.getString("answers"));
+				oa.setName(rs.getString("name"));
 			}
+			result.setOneAnswers(answers);
 			statement.close();
-			result.setRates(rates);
-			result.setMessages(list);
+			
 			result.calculate();
 			return result;
 		}
