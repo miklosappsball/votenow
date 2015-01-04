@@ -51,7 +51,8 @@ public class NotificationUtil
 		}
 	}
 
-	private final static String CERTIFICATE_FILE = "/appsball_ratenow.p12";
+	private final static String CERTIFICATE_FILE = "/appsball_votenow.p12";
+	private final static String CERTIFICATE_FILE_DEV = "/appsball_votenow_dev.p12";
 
 	private static void sendPushNotification(String code, String device, String title) 
 	{
@@ -72,7 +73,7 @@ public class NotificationUtil
 				Logger.info("Pushed notification dev: "+pn.getException());
 			}
 
-			is = NotificationUtil.class.getResourceAsStream(CERTIFICATE_FILE);
+			is = NotificationUtil.class.getResourceAsStream(CERTIFICATE_FILE_DEV);
 			pns = Push.payload(payload, is, "A1S2d3f4,.", true, device);
 			for (PushedNotification pn : pns) 
 			{
