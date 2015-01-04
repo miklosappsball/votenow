@@ -124,11 +124,6 @@ public class QuestionResult {
 		for(AnswerCollection ac: answerCollection)
 		{
 			ac.percentage = String.format("%.2f%%", 100.0 * ac.number / oneAnswers.size());  
-			
-			System.out.println(ac.choice);
-			System.out.println("\t"+ac.percentage);
-			System.out.println("\t"+ac.number);
-			System.out.println("\t"+ac.names);
 		}
 		
 	}

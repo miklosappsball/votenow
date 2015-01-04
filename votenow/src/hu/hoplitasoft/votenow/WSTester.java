@@ -130,7 +130,7 @@ public class WSTester
 			obj.put(Fields.DEVICE_ID.toString(), deviceid);
 			obj.put(Fields.DEVICE_TYPE.toString(), devicetype);
 			obj.put(Fields.QUESTION.toString(), "Title << \" \' \\ ? "+i);
-			obj.put(Fields.MULTICHOICE.toString(), true);
+			obj.put(Fields.MULTICHOICE.toString(), false);
 			obj.put(Fields.ANONYMOUS.toString(), false);
 			obj.put(Fields.TIME_FN.toString(), 15);
 			

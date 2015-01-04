@@ -32,7 +32,6 @@ public class QuestionCloser
 	{
 		synchronized (timer) 
 		{
-			System.out.println("findNextQuestionToClose!!!");
 			Timestamp t = new Timestamp(System.currentTimeMillis()+1000*MAX_POLL_TIME);
 			List<Timestamp> list = DBUtil.findNextQuestions();
 			if(list.size()>0) 
@@ -48,7 +47,6 @@ public class QuestionCloser
 				{
 					if(!stop)
 					{
-						System.out.println("Running!!!");
 						DBUtil.closeAlreadyFinishedQuestions();
 						findNextQuestionToClose();
 					}

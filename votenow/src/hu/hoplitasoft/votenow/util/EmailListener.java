@@ -4,7 +4,6 @@ package hu.hoplitasoft.votenow.util;
 import hu.hoplitasoft.votenow.QuestionCloser;
 import hu.hoplitasoft.votenow.data.QuestionResult;
 
-import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,26 +19,33 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class EmailListener  implements ServletContextListener {  
 	
 	private static String emailTemplate = null;
+	private static String choiceTemplate = null;
+	
 	private static String EMAIL_PORT = "465";
 	private static String EMAIL_HOST = "smtp.zoho.com";
+	
 	private static String EMAIL_USERNAME = "emailsender@appsball.com";
 	private static String EMAIL_PASSWORD = "AppsEmailer13";
 	
-	private static ServletContext context = null;
+	/*
+	private static String EMAIL_USERNAME = "konfar.andras@appsball.com";
+	private static String EMAIL_PASSWORD = "qwert2846";
+	*/
 	
-	public static void setEmailTemplate(String template)
-	{
-		emailTemplate = template;
-	}
+	private static ServletContext context = null;
 	
 	@Override  
     public void contextInitialized(ServletContextEvent sce) {  
         Logger.info(" ---- Setting up context ----");
         context = sce.getServletContext();
         emailTemplate = IOUtil.inputStreamToString(context.getResourceAsStream("emailtext.html"));
+        choiceTemplate = IOUtil.inputStreamToString(context.getResourceAsStream("choicetemplate.xml"));
         Logger.info(" ----- Setting up the servlet context for email listener -----");
         QuestionCloser.findNextQuestionToCloseStart();
     }  
@@ -94,7 +100,7 @@ public class EmailListener  implements ServletContextListener {
 		}.start();
 	}
 	
-	public final static String ADDRESS = "http://ratenow-appsball.rhcloud.com/";
+	public final static String ADDRESS = "http://votenow-appsball2.rhcloud.com/";
 	
 	public static String createEmailCode(String code, String question)
 	{
@@ -107,44 +113,78 @@ public class EmailListener  implements ServletContextListener {
 	{
 		String s = emailTemplate;
 		
-		System.out.println("XXXXXX");
-		result.createContentString();
-		
-		/*
-		s = s.replace("{question}", result.getTitle());
-		s = s.replace("{total}", ""+result.getNumberOfRates());
-		s = s.replace("{avarage}", result.getAvarage());
-		s = s.replace("{median}",  result.getMedian());
-		s = s.replace("{modus}", result.getModus());
-		s = s.replace("{sigma}", ""+result.getSdeviation());
-		
-		StringBuilder sb = new StringBuilder();
-		for(int i=0;i<result.getRates().length;i++)
+		try
 		{
-			sb.append("<tr><td>");
-			for(int j=0;j<=i;j++) sb.append("<img src=\"http://ratenow-appsball.rhcloud.com/star.jpg\">");
-			sb.append("</td><td style=\"text-align:right;\">"+result.getRates()[i]+"</td><td style=\"text-align:right;\">"+result.getPercentages().get(i)+"%</td></tr>");
-		}
-		
-		s = s.replace("{rates}", sb.toString());
-		
-		sb = new StringBuilder();
-		int i=0;
-		for(List<String> list : result.getMessages())
-		{
-			i++;
-			sb.append("<p>");
-			for(int j = 0;j<i;j++) sb.append("<img src=\""+ADDRESS+"star.jpg\">");
-			sb.append("</p>");
-			
-			for(String str:list)
+			JSONObject json = new JSONObject(result.createContentString());
+
+			s = s.replace("{question}", json.getString("title"));
+			s = s.replace("{total}", ""+json.getInt("numberOfRates"));
+			String type = json.getBoolean("anonym") ? "anonymous, " : "";
+			type += json.getBoolean("multichoice") ? "multichoice" : "single-choice";
+			s = s.replace("{type}", type);
+
+			StringBuilder sb = new StringBuilder();
+			JSONArray choices = json.getJSONArray("choices");
+			for(int i = 0; i<choices.length();i++)
 			{
-				sb.append(str+"<br/>");
+				JSONObject choice = choices.getJSONObject(i);
+				String choiceString = choiceTemplate;
+				choiceString = choiceString.replace("{choice}", choice.getString("choice"));
+				choiceString = choiceString.replace("{percentage}", choice.getInt("number")+" ("+choice.getString("percentage")+")");
+
+				StringBuilder sbc = new StringBuilder();
+				if(choice.has("comments"))
+				{
+					JSONArray comments = choice.getJSONArray("comments");
+					boolean first = true;
+					for(int j=0;j<comments.length();j++)
+					{
+						JSONObject comment = comments.getJSONObject(j);
+						if(json.getBoolean("multichoice"))
+						{
+							if(comment.has("name"))
+							{
+								if(!first) sbc.append(", ");
+								sbc.append(comment.getString("name"));
+								first = false;
+							}
+						}
+						else
+						{
+							sbc.append("<div style=\"clear:both; margin-top:5px;\">");
+							if(comment.has("name")) sbc.append("<b>"+comment.getString("name")+":</b> ");
+							if(comment.has("comment")) sbc.append(comment.getString("comment"));
+							sbc.append("</div>");
+						}
+					}
+				}
+				choiceString = choiceString.replace("{comments_for_choice}", sbc.toString());
+
+				sb.append(choiceString); 
 			}
+			
+			if(json.has("comments"))
+			{
+				sb.append("<div style=\"clear:both; font-size: 22pt; font-weight: bold; margin-top: 30px; color: red; text-decoration: underline;\">Comments:</div>");
+				JSONArray comments = json.getJSONArray("comments");
+				for(int j=0;j<comments.length();j++)
+				{
+					JSONObject comment = comments.getJSONObject(j);
+					sb.append("<div style=\"clear:both; margin-top:5px;\">");
+					if(comment.has("name")) sb.append("<b>"+comment.getString("name")+":</b> ");
+					if(comment.has("comment")) sb.append(comment.getString("comment"));
+					sb.append("</div>");
+				}
+			}
+			
+			
+			s = s.replace("{choices}", sb.toString());
 		}
-		
-		s = s.replace("{messages}", ""+sb.toString());
-		*/
+		catch(Exception e)
+		{
+			s = "Internal server error("+e.getMessage()+")! Please contact us!";
+			e.printStackTrace();
+		}
 		s += createMessageEnding();
 		
 		return s;

@@ -1,0 +1,9 @@
+<div style="clear: both; font-size: 22pt; font-weight: bold; margin-top: 30px; color: green; text-decoration: underline;">
+	{choice}
+</div>
+
+<div style="clear: both; font-size: 16pt; font-weight: bold; margin-top: 10px;">
+	{percentage}
+</div>
+
+{comments_for_choice}
