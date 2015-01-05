@@ -31,7 +31,7 @@ public class EmailListener  implements ServletContextListener {
 	private static String EMAIL_HOST = "smtp.zoho.com";
 	
 	private static String EMAIL_USERNAME = "emailsender@appsball.com";
-	private static String EMAIL_PASSWORD = "AppsEmailer13";
+	private static String EMAIL_PASSWORD = "AppEmailer13";
 	
 	/*
 	private static String EMAIL_USERNAME = "konfar.andras@appsball.com";
