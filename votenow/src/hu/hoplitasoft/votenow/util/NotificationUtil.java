@@ -1,5 +1,7 @@
 package hu.hoplitasoft.votenow.util;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -21,7 +23,7 @@ public class NotificationUtil
 		
 		if(devicetype.startsWith("IOS"))
 		{
-			sendPushNotification(code, device, title);
+			sendPushNotification(code, device, title, devicetype);
 		}
 		else
 		{
@@ -50,11 +52,41 @@ public class NotificationUtil
 			e.printStackTrace();
 		}
 	}
-
+	 
+	private static boolean production = true;
+	private final static String DIR = "WEB-INF/classes";
 	private final static String CERTIFICATE_FILE = "/appsball_votenow.p12";
 	private final static String CERTIFICATE_FILE_DEV = "/appsball_votenow_dev.p12";
-
-	private static void sendPushNotification(String code, String device, String title) 
+	
+	public static InputStream getCertificateFile() throws Exception
+	{
+		return getCertificateInputStream(CERTIFICATE_FILE);
+	}
+	
+	public static InputStream getCertificateFileDev() throws Exception
+	{
+		return getCertificateInputStream(CERTIFICATE_FILE_DEV);
+	}
+	
+	private static InputStream getCertificateInputStream(String file) throws Exception
+	{
+		if(production) return NotificationUtil.class.getResourceAsStream(file);
+		else 
+		{
+			System.out.println(new File(DIR+file).getAbsolutePath());
+			return new FileInputStream(new File(DIR+file));
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		production = false;
+		System.out.println(new File("x").getAbsolutePath());
+		// sendPushNotification("123456", "f416fd527aff3c37adaa36c221b4177b33b9e9331ace08842d85486124c314d4", "Test title", "IOSD");
+		sendPushNotification("123456", "f29889c563f070d633b4b6df6072b6eaf45472cd1de49c1db3acd4c8410e23b8", "Test title", "IOS");
+	}
+	
+	private static void sendPushNotification(String code, String device, String title, String devicetype) 
 	{
 		try
 		{
@@ -64,25 +96,24 @@ public class NotificationUtil
 			PushNotificationPayload payload = PushNotificationPayload.complex();
 			payload.addAlert(alert);
 			payload.addCustomDictionary("code", code);
-			// PushedNotifications pns = Push.combined(msg, 1, "", is, "A1S2d3f4,.", true, "1586f354a56140fdc9e8a65b68805ff854407b3be4badc9794dcb17b2c257aa5");
-
-			InputStream is = NotificationUtil.class.getResourceAsStream(CERTIFICATE_FILE);
-			PushedNotifications pns = Push.payload(payload, is, "A1S2d3f4,.", false, device);
-			for (PushedNotification pn : pns) 
-			{
-				Logger.info("Pushed notification dev: "+pn.getException());
-			}
-
-			is = NotificationUtil.class.getResourceAsStream(CERTIFICATE_FILE_DEV);
-			pns = Push.payload(payload, is, "A1S2d3f4,.", true, device);
-			for (PushedNotification pn : pns) 
-			{
-				Logger.info("Pushed notification: "+pn.getException());
-			}
+			
+			boolean production = !devicetype.startsWith("IOSD");
+			sendPayload(payload, production, device);
 		}
 		 catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+	private static void sendPayload(PushNotificationPayload payload, boolean production, String device) throws Exception
+	{
+
+		InputStream is = production ? getCertificateFile() : getCertificateFileDev();
+		PushedNotifications pns = Push.payload(payload, is, "A1S2d3f4,.", production, device);
+		for (PushedNotification pn : pns) 
+		{
+			Logger.info("Pushed notification dev (production: "+production+"): "+pn.getException());
 		}
 	}
 }
