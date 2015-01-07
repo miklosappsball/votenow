@@ -116,9 +116,9 @@ public class QuestionResult {
 						if(!addedToComments)
 						{
 							comments.add(oa.getText());
-							if(!anonymous) names.add(oa.getName());
 							addedToComments = true;
 						}
+						if(!anonymous) names.add(oa.getName());
 					}
 				}
 			}
@@ -128,9 +128,9 @@ public class QuestionResult {
 		
 		for(AnswerCollection ac: answerCollection)
 		{
-			ac.percentage = String.format("%.2f%%", 100.0 * ac.number / oneAnswers.size());  
+			ac.percentage = String.format("%.2f%%", 100.0 * ac.number / oneAnswers.size());
+			if(oneAnswers.size() == 0) ac.percentage = "-";
 		}
-		
 	}
 	
 	public String createContentString() 
