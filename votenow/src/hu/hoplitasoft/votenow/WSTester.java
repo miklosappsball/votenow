@@ -66,8 +66,8 @@ public class WSTester
 			for(int i=1; i < array.length();i++) rate += "0";
 			
 			String s = createAnswer(qcode, rate, "Béla", "message by Béla", "IOS", "IOS_DEVICE_ID_1");
-			createAnswer(qcode, "00100", "Andris", "message by Andris", "IOS", "IOS_DEVICE_ID_2");
-			createAnswer(qcode, "00010", "Csilla", "message by Csilla", "IOS", "IOS_DEVICE_ID_3");
+			createAnswer(qcode, "00111", "Andris", "message by Andris", "IOS", "IOS_DEVICE_ID_2");
+			createAnswer(qcode, "00111", "Csilla", "message by Csilla", "IOS", "IOS_DEVICE_ID_3");
 			createAnswer(qcode, rate, "Anna", "message by Anna", "IOS", "IOS_DEVICE_ID_4");
 			System.out.println(s);
 			System.out.println(getAnswerFromString(s));
@@ -136,8 +136,8 @@ public class WSTester
 			obj.put(Fields.QUESTION.toString(), "Title << \" \' \\ ? "+i);
 			obj.put(Fields.MULTICHOICE.toString(), true);
 			obj.put(Fields.ANONYMOUS.toString(), false);
-			obj.put(Fields.TIME_FN.toString(), 40);
-			obj.put(Fields.TIME_FN_START.toString(), 15);
+			obj.put(Fields.TIME_FN.toString(), 20);
+			obj.put(Fields.TIME_FN_START.toString(), 5);
 			
 			JSONArray array = new JSONArray();
 			array.put("Choice 1 (\""+i+"\")");

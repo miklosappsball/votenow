@@ -95,6 +95,7 @@ public class QuestionResult {
 		
 		for(OneAnswer oa : oneAnswers)
 		{
+			boolean addedToComments = false;
 			for(int i=0;i<oa.getAnswers().length();i++)
 			{
 				if(oa.getAnswers().charAt(i) != '0')
@@ -112,8 +113,12 @@ public class QuestionResult {
 					}
 					else
 					{
-						comments.add(oa.getText());
-						if(!anonymous) names.add(oa.getName());
+						if(!addedToComments)
+						{
+							comments.add(oa.getText());
+							if(!anonymous) names.add(oa.getName());
+							addedToComments = true;
+						}
 					}
 				}
 			}
