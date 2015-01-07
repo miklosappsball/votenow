@@ -16,6 +16,7 @@ CREATE TABLE question (
 	id 				BIGINT NOT NULL AUTO_INCREMENT,
 	email 			CHAR(60) NOT NULL,
 	title			TEXT(500) NOT NULL, 
+	startTime		DATETIME NOT NULL, 
 	endTime			DATETIME NOT NULL,
 	code			CHAR(20) UNIQUE NOT NULL,
 	anonym			BOOLEAN NOT NULL,

@@ -8,5 +8,5 @@ public enum Fields {
 	CHOICES,
 	MULTICHOICE,
 	ANONYMOUS,
-	TIME_FN;
+	TIME_FN, TIME_FN_START;
 }

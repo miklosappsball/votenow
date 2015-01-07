@@ -57,7 +57,10 @@ public class DBUtil {
 			JSONArray choices = object.getJSONArray(Fields.CHOICES.toString());
 			
 			int timefn = object.getInt(Fields.TIME_FN.toString());
+			int timefnStart = object.getInt(Fields.TIME_FN_START.toString());
+			
 			Timestamp date = new Timestamp(System.currentTimeMillis()+timefn*1000);
+			Timestamp start = new Timestamp(System.currentTimeMillis()+timefnStart*1000);
 			
 			if(title.length() == 0) return Webservice.ERROR_START+"Please give a question!";
 			if(!EmailListener.isEmailValid(email)) return Webservice.ERROR_START+"Invalid email address!";
@@ -68,15 +71,16 @@ public class DBUtil {
 			long device_id = DBUtil.getDeviceId(deviceId, deviceType);
 			
 			String code = CodeUtil.generateCode();
-			String insertStr = "INSERT INTO question (email, title, endTime, code, anonym, multichoice, closed, device_id) VALUES(?, ?, ?, ?, ?, ?, 0, ?);";
+			String insertStr = "INSERT INTO question (email, title, endTime, startTime, code, anonym, multichoice, closed, device_id) VALUES(?, ?, ?, ?, ?, ?, ?, 0, ?);";
 			PreparedStatement statement = getConnection().prepareStatement(insertStr, Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, email);
 			statement.setString(2, title);
 			statement.setTimestamp(3, date);
-			statement.setString(4, code);
-			statement.setBoolean(5, anonym);
-			statement.setBoolean(6, multichoice);
-			statement.setLong(7, device_id);
+			statement.setTimestamp(4, start);
+			statement.setString(5, code);
+			statement.setBoolean(6, anonym);
+			statement.setBoolean(7, multichoice);
+			statement.setLong(8, device_id);
 			statement.execute();
 			
 			ResultSet rs = statement.getGeneratedKeys(); 
@@ -261,6 +265,12 @@ public class DBUtil {
 			if(r)
 			{
 				long timeLeft = resultSet.getTimestamp("endTime").getTime()-System.currentTimeMillis();
+				long timeToStart = resultSet.getTimestamp("startTime").getTime()-System.currentTimeMillis();
+				if(timeToStart > 0)
+				{
+					statement.close();
+					return Webservice.ERROR_START+"This vote has not been started yet!";
+				}
 				boolean closed = resultSet.getBoolean("closed");
 				String s = resultSet.getString("title");
 				long qid = resultSet.getLong("id");

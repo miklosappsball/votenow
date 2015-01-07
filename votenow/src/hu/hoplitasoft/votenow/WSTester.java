@@ -22,8 +22,8 @@ import org.json.JSONObject;
 
 public class WSTester 
 {
-	// public final static String BASEURL = "http://localhost:8080/votenow";
-	public final static String BASEURL = "http://votenow-appsball2.rhcloud.com/";
+	public final static String BASEURL = "http://10.62.1.219:8080/votenow";
+	// public final static String BASEURL = "http://votenow-appsball2.rhcloud.com/";
 	
 	public static void main(String args[])
 	{
@@ -40,9 +40,13 @@ public class WSTester
 			System.out.println("Waiting for: "+number);
 			Thread.sleep(1000*number);
 			
-			String questionAnswer = createGetQuestion(qcode, "IOS", "IOS_DEVICE_ID_1");
-			System.out.println(questionAnswer);
-			String questionData = getAnswerFromString(questionAnswer);
+			String questionData = getAnswerFromString(createGetQuestion(qcode, "IOS", "IOS_DEVICE_ID_1"));
+			while(questionData.startsWith("ERROR:This"))
+			{
+				Thread.sleep(1000);
+				questionData = getAnswerFromString(createGetQuestion(qcode, "IOS", "IOS_DEVICE_ID_1"));
+				System.out.println(questionData);
+			}
 			System.out.println(questionData);
 			JSONObject obj = new JSONObject(questionData);
 			System.out.println("Title: "+obj.getString(Fields.QUESTION.toString()));
@@ -132,7 +136,8 @@ public class WSTester
 			obj.put(Fields.QUESTION.toString(), "Title << \" \' \\ ? "+i);
 			obj.put(Fields.MULTICHOICE.toString(), true);
 			obj.put(Fields.ANONYMOUS.toString(), false);
-			obj.put(Fields.TIME_FN.toString(), 15);
+			obj.put(Fields.TIME_FN.toString(), 40);
+			obj.put(Fields.TIME_FN_START.toString(), 15);
 			
 			JSONArray array = new JSONArray();
 			array.put("Choice 1 (\""+i+"\")");
