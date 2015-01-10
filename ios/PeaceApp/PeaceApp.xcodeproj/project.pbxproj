@@ -1,0 +1,559 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		56326F431A0120CA00AFD3A3 /* WebserviceCalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 56326F421A0120CA00AFD3A3 /* WebserviceCalls.m */; };
+		56326F461A01210700AFD3A3 /* WSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 56326F451A01210700AFD3A3 /* WSUtil.m */; };
+		56326F491A0121EA00AFD3A3 /* soap.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56326F471A0121EA00AFD3A3 /* soap.xml */; };
+		56326F4A1A0121EA00AFD3A3 /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56326F481A0121EA00AFD3A3 /* TemplateIcon2x.png */; };
+		56326F4C1A0124E700AFD3A3 /* soap-count.xml in Resources */ = {isa = PBXBuildFile; fileRef = 56326F4B1A0124E700AFD3A3 /* soap-count.xml */; };
+		56326F4D1A0125B000AFD3A3 /* soap.xml in Sources */ = {isa = PBXBuildFile; fileRef = 56326F471A0121EA00AFD3A3 /* soap.xml */; };
+		56326F4E1A0125B000AFD3A3 /* soap-count.xml in Sources */ = {isa = PBXBuildFile; fileRef = 56326F4B1A0124E700AFD3A3 /* soap-count.xml */; };
+		56326F511A027FC600AFD3A3 /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 56326F501A027FC600AFD3A3 /* DeviceUtil.m */; };
+		56326F531A0A934000AFD3A3 /* qr.png in Resources */ = {isa = PBXBuildFile; fileRef = 56326F521A0A934000AFD3A3 /* qr.png */; };
+		56326F561A0A973300AFD3A3 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56326F551A0A973300AFD3A3 /* InfoViewController.m */; };
+		565DF54519FC506300388518 /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 565DF54419FC506300388518 /* MainVC.m */; };
+		565DF54A19FD94F800388518 /* CameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 565DF54919FD94F800388518 /* CameraVC.m */; };
+		56C15D201A1662AD003452E8 /* myicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56C15D1F1A1662AD003452E8 /* myicon@2x.png */; };
+		56C15D231A166A8C003452E8 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C15D211A166A8C003452E8 /* libAdIdAccess.a */; };
+		56C15D241A166A8C003452E8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C15D221A166A8C003452E8 /* libGoogleAnalyticsServices.a */; };
+		56C15D281A166AF3003452E8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C15D251A166AF3003452E8 /* CoreData.framework */; };
+		56C15D291A166AF3003452E8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C15D261A166AF3003452E8 /* libz.dylib */; };
+		56C15D2A1A166AF3003452E8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C15D271A166AF3003452E8 /* SystemConfiguration.framework */; };
+		56C15D2C1A166B59003452E8 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C15D2B1A166B59003452E8 /* AdSupport.framework */; };
+		56C2C46619F57086000E5833 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C46519F57086000E5833 /* main.m */; };
+		56C2C46919F57086000E5833 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C46819F57086000E5833 /* AppDelegate.m */; };
+		56C2C46C19F57086000E5833 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C46B19F57086000E5833 /* ViewController.m */; };
+		56C2C46F19F57086000E5833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56C2C46D19F57086000E5833 /* Main.storyboard */; };
+		56C2C47119F57086000E5833 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56C2C47019F57086000E5833 /* Images.xcassets */; };
+		56C2C47419F57086000E5833 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C2C47219F57086000E5833 /* LaunchScreen.xib */; };
+		56C2C48019F57086000E5833 /* PeaceAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C47F19F57086000E5833 /* PeaceAppTests.m */; };
+		56C2C48A19F570CE000E5833 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C2C48919F570CE000E5833 /* Social.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		56C2C47A19F57086000E5833 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C2C45819F57086000E5833 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56C2C45F19F57086000E5833;
+			remoteInfo = PeaceApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		56326F411A0120CA00AFD3A3 /* WebserviceCalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebserviceCalls.h; sourceTree = "<group>"; };
+		56326F421A0120CA00AFD3A3 /* WebserviceCalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebserviceCalls.m; sourceTree = "<group>"; };
+		56326F441A01210700AFD3A3 /* WSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSUtil.h; sourceTree = "<group>"; };
+		56326F451A01210700AFD3A3 /* WSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSUtil.m; sourceTree = "<group>"; };
+		56326F471A0121EA00AFD3A3 /* soap.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = soap.xml; sourceTree = "<group>"; };
+		56326F481A0121EA00AFD3A3 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
+		56326F4B1A0124E700AFD3A3 /* soap-count.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "soap-count.xml"; sourceTree = "<group>"; };
+		56326F4F1A027FC600AFD3A3 /* DeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
+		56326F501A027FC600AFD3A3 /* DeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
+		56326F521A0A934000AFD3A3 /* qr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr.png; sourceTree = "<group>"; };
+		56326F541A0A973300AFD3A3 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		56326F551A0A973300AFD3A3 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		565DF54319FC506300388518 /* MainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVC.h; sourceTree = "<group>"; };
+		565DF54419FC506300388518 /* MainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainVC.m; sourceTree = "<group>"; };
+		565DF54819FD94F800388518 /* CameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraVC.h; sourceTree = "<group>"; };
+		565DF54919FD94F800388518 /* CameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraVC.m; sourceTree = "<group>"; };
+		565DF54B19FD958600388518 /* Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
+		56C15D1F1A1662AD003452E8 /* myicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myicon@2x.png"; sourceTree = "<group>"; };
+		56C15D211A166A8C003452E8 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
+		56C15D221A166A8C003452E8 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		56C15D251A166AF3003452E8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		56C15D261A166AF3003452E8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		56C15D271A166AF3003452E8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		56C15D2B1A166B59003452E8 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		56C15D2E1A166C14003452E8 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		56C15D2F1A166C14003452E8 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		56C15D301A166C14003452E8 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		56C15D311A166C14003452E8 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		56C15D321A166C14003452E8 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		56C15D331A166C14003452E8 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		56C15D341A166C14003452E8 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		56C15D351A166C14003452E8 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		56C15D361A166C14003452E8 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		56C15D371A166C14003452E8 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		56C2C46019F57086000E5833 /* PeaceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeaceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56C2C46419F57086000E5833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56C2C46519F57086000E5833 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		56C2C46719F57086000E5833 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		56C2C46819F57086000E5833 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		56C2C46A19F57086000E5833 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		56C2C46B19F57086000E5833 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		56C2C46E19F57086000E5833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		56C2C47019F57086000E5833 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		56C2C47319F57086000E5833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		56C2C47919F57086000E5833 /* PeaceAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeaceAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56C2C47E19F57086000E5833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56C2C47F19F57086000E5833 /* PeaceAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeaceAppTests.m; sourceTree = "<group>"; };
+		56C2C48919F570CE000E5833 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		56C2C45D19F57086000E5833 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56C15D2C1A166B59003452E8 /* AdSupport.framework in Frameworks */,
+				56C15D281A166AF3003452E8 /* CoreData.framework in Frameworks */,
+				56C15D291A166AF3003452E8 /* libz.dylib in Frameworks */,
+				56C15D2A1A166AF3003452E8 /* SystemConfiguration.framework in Frameworks */,
+				56C2C48A19F570CE000E5833 /* Social.framework in Frameworks */,
+				56C15D231A166A8C003452E8 /* libAdIdAccess.a in Frameworks */,
+				56C15D241A166A8C003452E8 /* libGoogleAnalyticsServices.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56C2C47619F57086000E5833 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		56C15D2D1A166C14003452E8 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				56C15D2E1A166C14003452E8 /* GAI.h */,
+				56C15D2F1A166C14003452E8 /* GAIDictionaryBuilder.h */,
+				56C15D301A166C14003452E8 /* GAIEcommerceFields.h */,
+				56C15D311A166C14003452E8 /* GAIEcommerceProduct.h */,
+				56C15D321A166C14003452E8 /* GAIEcommerceProductAction.h */,
+				56C15D331A166C14003452E8 /* GAIEcommercePromotion.h */,
+				56C15D341A166C14003452E8 /* GAIFields.h */,
+				56C15D351A166C14003452E8 /* GAILogger.h */,
+				56C15D361A166C14003452E8 /* GAITrackedViewController.h */,
+				56C15D371A166C14003452E8 /* GAITracker.h */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		56C2C45719F57086000E5833 = {
+			isa = PBXGroup;
+			children = (
+				56C15D2B1A166B59003452E8 /* AdSupport.framework */,
+				56C15D251A166AF3003452E8 /* CoreData.framework */,
+				56C15D261A166AF3003452E8 /* libz.dylib */,
+				56C15D271A166AF3003452E8 /* SystemConfiguration.framework */,
+				56C2C48919F570CE000E5833 /* Social.framework */,
+				56C2C46219F57086000E5833 /* PeaceApp */,
+				56C2C47C19F57086000E5833 /* PeaceAppTests */,
+				56C2C46119F57086000E5833 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		56C2C46119F57086000E5833 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				56C2C46019F57086000E5833 /* PeaceApp.app */,
+				56C2C47919F57086000E5833 /* PeaceAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		56C2C46219F57086000E5833 /* PeaceApp */ = {
+			isa = PBXGroup;
+			children = (
+				56C15D2D1A166C14003452E8 /* Analytics */,
+				56C15D211A166A8C003452E8 /* libAdIdAccess.a */,
+				56C15D221A166A8C003452E8 /* libGoogleAnalyticsServices.a */,
+				56C2C46719F57086000E5833 /* AppDelegate.h */,
+				56C2C46819F57086000E5833 /* AppDelegate.m */,
+				56C2C46A19F57086000E5833 /* ViewController.h */,
+				56C2C46B19F57086000E5833 /* ViewController.m */,
+				56326F521A0A934000AFD3A3 /* qr.png */,
+				56C15D1F1A1662AD003452E8 /* myicon@2x.png */,
+				56C2C46D19F57086000E5833 /* Main.storyboard */,
+				56C2C47019F57086000E5833 /* Images.xcassets */,
+				56C2C47219F57086000E5833 /* LaunchScreen.xib */,
+				56C2C46319F57086000E5833 /* Supporting Files */,
+				565DF54319FC506300388518 /* MainVC.h */,
+				565DF54419FC506300388518 /* MainVC.m */,
+				565DF54819FD94F800388518 /* CameraVC.h */,
+				565DF54919FD94F800388518 /* CameraVC.m */,
+				565DF54B19FD958600388518 /* Colors.h */,
+				56326F411A0120CA00AFD3A3 /* WebserviceCalls.h */,
+				56326F421A0120CA00AFD3A3 /* WebserviceCalls.m */,
+				56326F441A01210700AFD3A3 /* WSUtil.h */,
+				56326F451A01210700AFD3A3 /* WSUtil.m */,
+				56326F471A0121EA00AFD3A3 /* soap.xml */,
+				56326F4B1A0124E700AFD3A3 /* soap-count.xml */,
+				56326F481A0121EA00AFD3A3 /* TemplateIcon2x.png */,
+				56326F4F1A027FC600AFD3A3 /* DeviceUtil.h */,
+				56326F501A027FC600AFD3A3 /* DeviceUtil.m */,
+				56326F541A0A973300AFD3A3 /* InfoViewController.h */,
+				56326F551A0A973300AFD3A3 /* InfoViewController.m */,
+			);
+			path = PeaceApp;
+			sourceTree = "<group>";
+		};
+		56C2C46319F57086000E5833 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				56C2C46419F57086000E5833 /* Info.plist */,
+				56C2C46519F57086000E5833 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		56C2C47C19F57086000E5833 /* PeaceAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				56C2C47F19F57086000E5833 /* PeaceAppTests.m */,
+				56C2C47D19F57086000E5833 /* Supporting Files */,
+			);
+			path = PeaceAppTests;
+			sourceTree = "<group>";
+		};
+		56C2C47D19F57086000E5833 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				56C2C47E19F57086000E5833 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		56C2C45F19F57086000E5833 /* PeaceApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56C2C48319F57086000E5833 /* Build configuration list for PBXNativeTarget "PeaceApp" */;
+			buildPhases = (
+				56C2C45C19F57086000E5833 /* Sources */,
+				56C2C45D19F57086000E5833 /* Frameworks */,
+				56C2C45E19F57086000E5833 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PeaceApp;
+			productName = PeaceApp;
+			productReference = 56C2C46019F57086000E5833 /* PeaceApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		56C2C47819F57086000E5833 /* PeaceAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56C2C48619F57086000E5833 /* Build configuration list for PBXNativeTarget "PeaceAppTests" */;
+			buildPhases = (
+				56C2C47519F57086000E5833 /* Sources */,
+				56C2C47619F57086000E5833 /* Frameworks */,
+				56C2C47719F57086000E5833 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56C2C47B19F57086000E5833 /* PBXTargetDependency */,
+			);
+			name = PeaceAppTests;
+			productName = PeaceAppTests;
+			productReference = 56C2C47919F57086000E5833 /* PeaceAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		56C2C45819F57086000E5833 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Andris Konfar";
+				TargetAttributes = {
+					56C2C45F19F57086000E5833 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					56C2C47819F57086000E5833 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 56C2C45F19F57086000E5833;
+					};
+				};
+			};
+			buildConfigurationList = 56C2C45B19F57086000E5833 /* Build configuration list for PBXProject "PeaceApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 56C2C45719F57086000E5833;
+			productRefGroup = 56C2C46119F57086000E5833 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				56C2C45F19F57086000E5833 /* PeaceApp */,
+				56C2C47819F57086000E5833 /* PeaceAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		56C2C45E19F57086000E5833 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56C2C46F19F57086000E5833 /* Main.storyboard in Resources */,
+				56326F491A0121EA00AFD3A3 /* soap.xml in Resources */,
+				56326F4A1A0121EA00AFD3A3 /* TemplateIcon2x.png in Resources */,
+				56C2C47419F57086000E5833 /* LaunchScreen.xib in Resources */,
+				56C15D201A1662AD003452E8 /* myicon@2x.png in Resources */,
+				56326F531A0A934000AFD3A3 /* qr.png in Resources */,
+				56C2C47119F57086000E5833 /* Images.xcassets in Resources */,
+				56326F4C1A0124E700AFD3A3 /* soap-count.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56C2C47719F57086000E5833 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		56C2C45C19F57086000E5833 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56326F4D1A0125B000AFD3A3 /* soap.xml in Sources */,
+				56326F511A027FC600AFD3A3 /* DeviceUtil.m in Sources */,
+				56326F561A0A973300AFD3A3 /* InfoViewController.m in Sources */,
+				56326F4E1A0125B000AFD3A3 /* soap-count.xml in Sources */,
+				56C2C46C19F57086000E5833 /* ViewController.m in Sources */,
+				565DF54519FC506300388518 /* MainVC.m in Sources */,
+				56326F431A0120CA00AFD3A3 /* WebserviceCalls.m in Sources */,
+				56326F461A01210700AFD3A3 /* WSUtil.m in Sources */,
+				565DF54A19FD94F800388518 /* CameraVC.m in Sources */,
+				56C2C46919F57086000E5833 /* AppDelegate.m in Sources */,
+				56C2C46619F57086000E5833 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56C2C47519F57086000E5833 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56C2C48019F57086000E5833 /* PeaceAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		56C2C47B19F57086000E5833 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56C2C45F19F57086000E5833 /* PeaceApp */;
+			targetProxy = 56C2C47A19F57086000E5833 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		56C2C46D19F57086000E5833 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56C2C46E19F57086000E5833 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		56C2C47219F57086000E5833 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				56C2C47319F57086000E5833 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		56C2C48119F57086000E5833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Miklós Csendes (X9HECT73R7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Miklós Csendes (X9HECT73R7)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		56C2C48219F57086000E5833 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Appsball Korlatolt Felelossegu Tarsasag (VQXT3TNA73)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Appsball Korlatolt Felelossegu Tarsasag (VQXT3TNA73)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		56C2C48419F57086000E5833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PeaceApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PeaceApp",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		56C2C48519F57086000E5833 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PeaceApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PeaceApp",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		56C2C48719F57086000E5833 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PeaceAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeaceApp.app/PeaceApp";
+			};
+			name = Debug;
+		};
+		56C2C48819F57086000E5833 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PeaceAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeaceApp.app/PeaceApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		56C2C45B19F57086000E5833 /* Build configuration list for PBXProject "PeaceApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56C2C48119F57086000E5833 /* Debug */,
+				56C2C48219F57086000E5833 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56C2C48319F57086000E5833 /* Build configuration list for PBXNativeTarget "PeaceApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56C2C48419F57086000E5833 /* Debug */,
+				56C2C48519F57086000E5833 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56C2C48619F57086000E5833 /* Build configuration list for PBXNativeTarget "PeaceAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56C2C48719F57086000E5833 /* Debug */,
+				56C2C48819F57086000E5833 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 56C2C45819F57086000E5833 /* Project object */;
+}

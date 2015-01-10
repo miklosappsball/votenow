@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:feed="http://peaceapp.appsball.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <feed:addId>
+            <arg0>eFjkTnzX61k2U05xp_hp5bvTMmo1U81occ6Kr4NOTw4fK3CAarSxnkZi7vtc6E81P9hxecry4YsRcWCFuSMZy7_j4</arg0>
+        </feed:addId>
+    </soapenv:Body>
+</soapenv:Envelope>
