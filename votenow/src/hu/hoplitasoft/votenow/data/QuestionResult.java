@@ -141,7 +141,7 @@ public class QuestionResult {
 			json.put("title", title);
 			json.put("numberOfRates", ""+oneAnswers.size());
 			json.put("multichoice", multichoice);
-			json.put("anonym", anonymous);
+			json.put("anonym", anonymous); 
 			
 			{
 				int length = Math.max(comments.size(), names.size());
