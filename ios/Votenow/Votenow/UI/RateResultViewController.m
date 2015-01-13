@@ -57,7 +57,8 @@
                 
                 [self addTextTop:y text:@"Type:" size:15];
                 
-                if(((NSNumber*)answer.json[@"anonym"]).boolValue) y = [self addTextTop:y text:@"anonymous" size:15 left:160];
+                NSString* anonymous = ((NSNumber*)answer.json[@"anonym"]).boolValue ? @"anonymous" : @"non-anonymous";
+                y = [self addTextTop:y text:anonymous size:15 left:160];
                 NSString* mutlistr = ((NSNumber*)answer.json[@"multichoice"]).boolValue ? @"multichoice" : @"single-choice";
                 [self addTextTop:y text:mutlistr size:15 left:160];
                 

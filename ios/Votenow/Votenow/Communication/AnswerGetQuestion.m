@@ -31,7 +31,7 @@
                 self.leftTimeInSec = jsonArray[FIELD_TIME_FN];
                 self.choices = jsonArray[FIELD_CHOICES];
                 self.multi = ((NSNumber*)jsonArray[FIELD_MULTICHOICE]).boolValue;
-                self.anonym = ((NSNumber*)jsonArray[FIELD_MULTICHOICE]).boolValue;
+                self.anonym = ((NSNumber*)jsonArray[FIELD_ANONYMOUS]).boolValue;
             }
         }
     }

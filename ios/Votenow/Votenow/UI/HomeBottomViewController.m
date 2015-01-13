@@ -79,6 +79,7 @@
         
         swAnonym = [[UISwitch alloc] init];
         swAnonym.frame = CGRectMake(LEFT_MARGIN, 60, swAnonym.frame.size.width, swAnonym.frame.size.height);
+        [swAnonym setOn:YES animated:NO];
         [self.view addSubview:swAnonym];
         
         UILabel* lbl = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(swAnonym.frame)+5, swAnonym.frame.origin.y, 211, swAnonym.frame.size.height)];
@@ -154,7 +155,8 @@
         time = 180;
         
         UIButton* dateShowerButton = [ButtonUtil createButton];
-        dateShowerButton.frame = CGRectMake(self.view.frame.size.width - LEFT_MARGIN - dateShowerButtonView.frame.size.height, dateShowerButtonView.frame.size.height / 2 - 30/2, 50, 30);
+        dateShowerButton.frame = CGRectMake(self.view.frame.size.width - LEFT_MARGIN - 50, dateShowerButtonView.frame.size.height / 2 - 30/2, 50, 30);
+        dateShowerButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         [dateShowerButtonView addSubview:dateShowerButton];
         [dateShowerButton setTitle:@"Set" forState:UIControlStateNormal];
         [dateShowerButton addTarget:self action:@selector(showDateSelector) forControlEvents:UIControlEventTouchUpInside];
@@ -163,6 +165,8 @@
         [self addNewItem:NO];
         [self addNewItem:NO];
         
+        email.text = @"konfar.andras@gmail.com";
+        question.text = @"My question!";
     }
     return self;
 }
@@ -205,6 +209,8 @@
     holder.letter = letter;
     [choices addObject:holder];
     
+    
+    [MAIN_VIEW_CONTROLLER.view endEditing:YES];
     [self calculatePositions:animate];
 }
 
@@ -225,6 +231,7 @@
         holder.letter.alpha = 0;
     }];
     
+    [MAIN_VIEW_CONTROLLER.view endEditing:YES];
     [self calculatePositions:YES];
 }
 
@@ -275,7 +282,7 @@
         
         // button position
         r = button.frame;
-        r.origin.y = CGRectGetMaxY(email.frame)+80;
+        r.origin.y = CGRectGetMaxY(email.frame)+dateShowerButtonView.frame.size.height+40;
         button.frame = r;
         y = CGRectGetMaxY(button.frame)+20;
         
@@ -309,7 +316,7 @@
     
     UIDatePicker* dp = [[UIDatePicker alloc] init];
     dp.frame = CGRectMake(0, CGRectGetMinY(selectDate.frame)-dp.frame.size.height, dp.frame.size.width, dp.frame.size.height);
-    dp.minimumDate = [NSDate date];
+    dp.minimumDate = [NSDate dateWithTimeIntervalSinceNow:180];
     [vc.view addSubview:dp];
     dp.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     datePicker = dp;
@@ -374,7 +381,13 @@
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateStyle:NSDateFormatterShortStyle];
     [df setTimeStyle:NSDateFormatterShortStyle];
-    dateLabel.text = [NSString stringWithFormat:@"Time limit:\n %@", [df stringFromDate:timeLimitDate]];
+    dateLabel.text = [NSString stringWithFormat:@"Start of vote:\n    %@\n\nTime limit:\n    %@", [df stringFromDate:timeStartDate], [df stringFromDate:timeLimitDate]];
+    dateLabel.frame = CGRectMake(LEFT_MARGIN, 0, self.view.frame.size.width - LEFT_MARGIN - LEFT_MARGIN, 500);
+    [dateLabel sizeToFit];
+    dateShowerButtonView.frame = CGRectMake(0, dateShowerButtonView.frame.origin.y, dateShowerButtonView.frame.size.width, dateLabel.frame.size.height);
+    
+    [self calculatePositions:NO];
+    
     [MAIN_VIEW_CONTROLLER dismissViewControllerAnimated:YES completion:^{}];
 }
 
@@ -417,11 +430,10 @@
         long secondsStart = 0;
         if(timeLimitDate != nil)
         {
-            seconds = [timeLimitDate timeIntervalSinceDate:[NSDate date]];
-            secondsStart = [timeStartDate timeIntervalSinceDate:[NSDate date]];
+            seconds = [self getMinutesPartSecondsFromNow:timeLimitDate]+60;
+            secondsStart = [self getMinutesPartSecondsFromNow:timeStartDate];
         }
         
-        NSLog(@"%ld %ld", seconds, secondsStart);
         AnswerAncestor* answer = nil;
         if(seconds > 0)
         {
@@ -434,7 +446,6 @@
                                                              answers:array];
             
         }
-        
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [LOADING_INDICATOR hideLoadingIndicator];
@@ -462,6 +473,15 @@
             [defs synchronize];
         });
     });
+}
+
+- (long) getMinutesPartSecondsFromNow:(NSDate*) date
+{
+    NSDateComponents *comps = [[NSCalendar currentCalendar]
+                              components:NSSecondCalendarUnit
+                              fromDate:date];
+    
+    return [date timeIntervalSinceDate:[NSDate date]]-[comps second];
 }
 
 @end
