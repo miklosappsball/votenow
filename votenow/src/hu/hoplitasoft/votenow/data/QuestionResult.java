@@ -116,9 +116,9 @@ public class QuestionResult {
 						if(!addedToComments)
 						{
 							comments.add(oa.getText());
+							if(!anonymous) names.add(oa.getName());
 							addedToComments = true;
 						}
-						if(!anonymous) names.add(oa.getName());
 					}
 				}
 			}

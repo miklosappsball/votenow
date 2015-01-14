@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "LoadingIndicatorViewController.h"
 #import "Colors.h"
+#import "AnalyticsHelper.h"
 
 
 @interface MainViewController ()
@@ -63,6 +64,7 @@ static MainViewController* instance = nil;
         button = [UIButton buttonWithType:UIButtonTypeCustom];
         UIImage* image = [UIImage imageNamed:@"appsball_logo.png"];
         [button setImage:image forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(openAppsball) forControlEvents:UIControlEventTouchUpInside];
         
         CGFloat imgWidth = 60;
         CGFloat imgHeight = 45;
@@ -75,6 +77,13 @@ static MainViewController* instance = nil;
     return self;
 }
 
+- (void) openAppsball
+{
+    [AnalyticsHelper send:@"AppsBallIconPressed"];
+    NSURL *url = [NSURL URLWithString:@"http://www.appsball.com"];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 - (void) scrollSize:(CGFloat)y
 {
     contentSizeY = y;
@@ -83,7 +92,8 @@ static MainViewController* instance = nil;
 
 - (void) showInfo
 {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Vote now! - HELP" message:@"100% fast, 100% anonim, 100% confident\n\nIf somebody asks you to give a feedback then simple enter her/his rate code and rate the question with your comment within 3 minutes. We will keep your privacy and only the anonim/aggregated result will be accessible for the questioner.\n\nIf you want to ask feedback then you can enter your question (max. 500 character), email address (where the aggregated result will be sent to).\n\nAfterwards the application generates & sends you a rate code via push notification. Please share it with your target audiance who has 3 minutes to rate.\n\nBetter to ask your target audiance to download the application preliminary!\n\n3 minutes later you will receive a push notification to which only you can tap to access your result. The result will be sent to you via email, as well.\n\nResult contains: average rate, distribution, modus, median and detailed information regarding rates with anonim constructive comments.\n\nratenowhelp@appsball.com" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [AnalyticsHelper send:@"InfoButtonPressed"];
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Vote now! - HELP" message:@"100% fast, 100% anonim, 100% confident\n\nIf somebody asked you to vote a question\n1. enter vote code and\n2. choose from the alternatives (single or multichoice) with your comment\nwithin didplayed time limit (default: 3 minutes).\nIn case of non-anonymous question set your agreed ID (eg. name or email address,...) otherwise we keep your privacy and only the anonymous/aggregated result will be accessible for the questioner.\nIf you want to ask people to vote\n1. enter your question (max. 500 character) with answer alternatives\n 2. set question parameters: anonymous/non-anonymous and single/multichoise\n3. share the vote code with people who installed this application\n4. set question validity intervall (start-end)\nThe application will generate and send vote code via push notification and email.\nAfter you shared it with your target audiance they have the set time frame default: 3 minutes) to respond.\nBetter to ask your target audiance to install the application preliminary!\nAfter expiry only you will receive a push notification and email to access your result.\nResult contain answers with comments." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
 }
 
@@ -142,7 +152,7 @@ static MainViewController* instance = nil;
     isKeyboardHeight = 0;
     [UIView animateWithDuration:ANIMATION_DEFAULT_TIME delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^
      {
-         mainView.contentOffset = CGPointMake(0, 0);
+//         mainView.contentOffset = CGPointMake(0, 0);
          mainView.contentSize = CGSizeMake(0, contentSizeY);
      } completion:^(BOOL finished) {
      }];

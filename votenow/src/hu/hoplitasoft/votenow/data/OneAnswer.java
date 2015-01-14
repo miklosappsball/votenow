@@ -2,9 +2,9 @@ package hu.hoplitasoft.votenow.data;
 
 public class OneAnswer {
 
-	private String text;
+	private String text = "";
 	private String answers;
-	private String name;
+	private String name = "";
 	public String getText() {
 		return text;
 	}

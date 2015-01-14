@@ -80,6 +80,7 @@ public class EmailListener  implements ServletContextListener {
 				{
 					Message message = new MimeMessage(session);
 					message.setFrom(new InternetAddress(EMAIL_USERNAME));
+					
 					InternetAddress to[] = new InternetAddress[1];
 					to[0] = new InternetAddress(toEmail);
 					message.setRecipients(Message.RecipientType.TO, to);
@@ -90,7 +91,7 @@ public class EmailListener  implements ServletContextListener {
 					message.setRecipients(Message.RecipientType.BCC, mi);
 					 */
 					message.setSubject(subject);
-					message.setContent(content,"text/html");
+					message.setContent(content,"text/html; charset=UTF-8");
 					Transport.send(message);
 
 				} catch (MessagingException e) {
@@ -119,7 +120,7 @@ public class EmailListener  implements ServletContextListener {
 
 			s = s.replace("{question}", json.getString("title"));
 			s = s.replace("{total}", ""+json.getInt("numberOfRates"));
-			String type = json.getBoolean("anonym") ? "anonymous, " : "";
+			String type = json.getBoolean("anonym") ? "anonymous, " : "non-anonymous, ";
 			type += json.getBoolean("multichoice") ? "multichoice" : "single-choice";
 			s = s.replace("{type}", type);
 

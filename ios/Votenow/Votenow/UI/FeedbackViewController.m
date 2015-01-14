@@ -81,7 +81,7 @@
             UISwitch* sw = [[UISwitch alloc] init];
             sw.frame = CGRectMake(LEFT_MARGIN, y, sw.frame.size.width, sw.frame.size.height);
             [rateView addSubview:sw];
-            [sw addTarget:self action:@selector(onSwitchChange:) forControlEvents:UIControlEventTouchUpInside];
+            [sw addTarget:self action:@selector(onSwitchChange:) forControlEvents:UIControlEventValueChanged];
             [switches addObject:sw];
             
             if(multi && switches.count == 1) [sw setOn:YES];
