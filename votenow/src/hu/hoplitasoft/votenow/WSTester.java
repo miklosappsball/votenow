@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 public class WSTester 
 {
-	public final static String BASEURL = "http://10.62.1.219:8080/votenow";
+	public final static String BASEURL = "http://localhost:8080/votenow";
 	// public final static String BASEURL = "http://votenow-appsball2.rhcloud.com/";
 	
 	public static void main(String args[])
@@ -133,7 +133,7 @@ public class WSTester
 			obj.put(Fields.EMAIL.toString(), "konfar.andras@gmail.com");
 			obj.put(Fields.DEVICE_ID.toString(), deviceid);
 			obj.put(Fields.DEVICE_TYPE.toString(), devicetype);
-			obj.put(Fields.QUESTION.toString(), "Title << \" \' \\ ? "+i);
+			obj.put(Fields.QUESTION.toString(), "Title << \" \' \\ ?  űáéúőóüöíŰÁÉÚŐÓÜ"+i);
 			obj.put(Fields.MULTICHOICE.toString(), true);
 			obj.put(Fields.ANONYMOUS.toString(), false);
 			obj.put(Fields.TIME_FN.toString(), 20);
