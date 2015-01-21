@@ -13,9 +13,6 @@
 #import "AnswerGetQuestionResult.h"
 #import "DeviceUtil.h"
 
-
-
-
 @implementation WebserviceCalls
 
 + (NSString*) createCallWithXML:(NSString*) soapXML
@@ -25,38 +22,10 @@
     return [[NSString alloc] initWithBytes:data.bytes length:data.length encoding:NSUTF8StringEncoding];
 }
 
-+ (AnswerAncestor*) createQuestion:(NSString*)question email:(NSString*)email secondsStart:(NSString*)secondsStart seconds:(NSString*)seconds multichoice:(BOOL)multi anonym:(BOOL)anonym answers:(NSArray*)answers
++ (AnswerAncestor*) createQuestion:(NSString*)question description:(NSString*)description email:(NSString*)email  seconds:(NSString*)seconds secondsStart:(NSString*)secondsStart
 {
     NSString* soapMessage = [WebserviceCalls createCallWithXML:@"soap-question"];
-    
-    NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] initWithCapacity:11];
-    
-    [dictionary setObject:email forKey:FIELD_EMAIL];
-    [dictionary setObject:question forKey:FIELD_QUESTION];
-    [dictionary setObject:secondsStart forKey:FIELD_TIME_FN_START];
-    [dictionary setObject:seconds forKey:FIELD_TIME_FN];
-    [dictionary setObject:[NSNumber numberWithBool:multi] forKey:FIELD_MULTICHOICE];
-    [dictionary setObject:[NSNumber numberWithBool:anonym] forKey:FIELD_ANONYMOUS];
-    [dictionary setObject:[DeviceUtil deviceId] forKey:FIELD_DEVICE_ID];
-    [dictionary setObject:[DeviceUtil deviceType] forKey:FIELD_DEVICE_TYPE];
-    [dictionary setObject:answers forKey:FIELD_CHOICES];
-    
-    NSError* error = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-                                                         error:&error];
-    
-    if(error != nil)
-    {
-        NSLog(@"%@", error);
-        return nil;
-    }
-    
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    soapMessage = [NSString stringWithFormat:soapMessage, jsonString];
-    
-    NSLog(@"soapmessage:\n%@", soapMessage);
-    
+    soapMessage = [NSString stringWithFormat:soapMessage, email, question, description, seconds, secondsStart, [DeviceUtil deviceType], [DeviceUtil deviceId]];
     NSString* str = [WSUtil getDataFromServer:soapMessage];
     str = [WebserviceCalls getAnswerFromWSResponse:str];
     AnswerAncestor* answer = [[AnswerAncestor alloc] initWithAnswerString:str];
@@ -73,10 +42,10 @@
     return answer;
 }
 
-+ (AnswerAncestor*) createAnswer:(NSString*)code answers:(NSString*)answers name:(NSString*)name message:(NSString*)message
++ (AnswerAncestor*) createAnswer:(NSString*)code rating:(int)rate message:(NSString*)message
 {
     NSString* soapMessage = [WebserviceCalls createCallWithXML:@"soap-answer"];
-    soapMessage = [NSString stringWithFormat:soapMessage, code, answers, name, message, [DeviceUtil deviceType], [DeviceUtil deviceId]];
+    soapMessage = [NSString stringWithFormat:soapMessage, code, rate, message, [DeviceUtil deviceType], [DeviceUtil deviceId]];
     NSString* str = [WSUtil getDataFromServer:soapMessage];
     str = [WebserviceCalls getAnswerFromWSResponse:str];
     AnswerAncestor* answer = [[AnswerAncestor alloc] initWithAnswerString:str];

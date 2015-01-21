@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:feed="http://votenow.hoplitasoft.hu/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:feed="http://feedback.hoplitasoft.hu/">
    <soapenv:Header/>
    <soapenv:Body>
       <feed:addQuestion>
          <arg0><![CDATA[%@]]></arg0>
+         <arg1><![CDATA[%@]]></arg1>
+         <arg2><![CDATA[%@]]></arg2>
+         <arg3><![CDATA[%@]]></arg3>
+         <arg4><![CDATA[%@]]></arg4>
+         <arg5><![CDATA[%@]]></arg5>
+         <arg6><![CDATA[%@]]></arg6>
       </feed:addQuestion>
    </soapenv:Body>
 </soapenv:Envelope>

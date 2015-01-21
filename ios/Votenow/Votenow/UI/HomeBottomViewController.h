@@ -11,6 +11,5 @@
 @interface HomeBottomViewController : UIViewController
 
 - (id)initWithFrame:(CGRect) rect;
-- (void) calculatePositions:(BOOL)animate;
 
 @end
