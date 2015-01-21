@@ -4,6 +4,7 @@ package hu.hoplitasoft.votenow.util;
 import hu.hoplitasoft.votenow.QuestionCloser;
 import hu.hoplitasoft.votenow.data.QuestionResult;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -84,18 +85,22 @@ public class EmailListener  implements ServletContextListener {
 					InternetAddress to[] = new InternetAddress[1];
 					to[0] = new InternetAddress(toEmail);
 					message.setRecipients(Message.RecipientType.TO, to);
-					/*
+					
 					InternetAddress mi[] = new InternetAddress[2];
 					mi[0] = new InternetAddress("miklos.csendes@appsball.com");
 					mi[1] = new InternetAddress("szabolcs.pinter@appsball.com");
 					message.setRecipients(Message.RecipientType.BCC, mi);
-					 */
+					
+					message.setFrom(new InternetAddress(EMAIL_USERNAME, "Vote Now"));
+					
 					message.setSubject(subject);
 					message.setContent(content,"text/html; charset=UTF-8");
 					Transport.send(message);
 
 				} catch (MessagingException e) {
-					throw new RuntimeException(e);
+					e.printStackTrace();
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
 				}
 			}
 		}.start();
