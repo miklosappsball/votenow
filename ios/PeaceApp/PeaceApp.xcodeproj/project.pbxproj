@@ -32,19 +32,8 @@
 		56C2C46F19F57086000E5833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56C2C46D19F57086000E5833 /* Main.storyboard */; };
 		56C2C47119F57086000E5833 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56C2C47019F57086000E5833 /* Images.xcassets */; };
 		56C2C47419F57086000E5833 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C2C47219F57086000E5833 /* LaunchScreen.xib */; };
-		56C2C48019F57086000E5833 /* PeaceAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C47F19F57086000E5833 /* PeaceAppTests.m */; };
 		56C2C48A19F570CE000E5833 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C2C48919F570CE000E5833 /* Social.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		56C2C47A19F57086000E5833 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 56C2C45819F57086000E5833 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 56C2C45F19F57086000E5833;
-			remoteInfo = PeaceApp;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		56326F411A0120CA00AFD3A3 /* WebserviceCalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebserviceCalls.h; sourceTree = "<group>"; };
@@ -91,7 +80,6 @@
 		56C2C46E19F57086000E5833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56C2C47019F57086000E5833 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		56C2C47319F57086000E5833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		56C2C47919F57086000E5833 /* PeaceAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeaceAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56C2C47E19F57086000E5833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56C2C47F19F57086000E5833 /* PeaceAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeaceAppTests.m; sourceTree = "<group>"; };
 		56C2C48919F570CE000E5833 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -109,13 +97,6 @@
 				56C2C48A19F570CE000E5833 /* Social.framework in Frameworks */,
 				56C15D231A166A8C003452E8 /* libAdIdAccess.a in Frameworks */,
 				56C15D241A166A8C003452E8 /* libGoogleAnalyticsServices.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		56C2C47619F57086000E5833 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				56C2C46019F57086000E5833 /* PeaceApp.app */,
-				56C2C47919F57086000E5833 /* PeaceAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,24 +224,6 @@
 			productReference = 56C2C46019F57086000E5833 /* PeaceApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		56C2C47819F57086000E5833 /* PeaceAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 56C2C48619F57086000E5833 /* Build configuration list for PBXNativeTarget "PeaceAppTests" */;
-			buildPhases = (
-				56C2C47519F57086000E5833 /* Sources */,
-				56C2C47619F57086000E5833 /* Frameworks */,
-				56C2C47719F57086000E5833 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				56C2C47B19F57086000E5833 /* PBXTargetDependency */,
-			);
-			name = PeaceAppTests;
-			productName = PeaceAppTests;
-			productReference = 56C2C47919F57086000E5833 /* PeaceAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -273,10 +235,7 @@
 				TargetAttributes = {
 					56C2C45F19F57086000E5833 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					56C2C47819F57086000E5833 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 56C2C45F19F57086000E5833;
+						DevelopmentTeam = VQXT3TNA73;
 					};
 				};
 			};
@@ -294,7 +253,6 @@
 			projectRoot = "";
 			targets = (
 				56C2C45F19F57086000E5833 /* PeaceApp */,
-				56C2C47819F57086000E5833 /* PeaceAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -312,13 +270,6 @@
 				56326F531A0A934000AFD3A3 /* qr.png in Resources */,
 				56C2C47119F57086000E5833 /* Images.xcassets in Resources */,
 				56326F4C1A0124E700AFD3A3 /* soap-count.xml in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		56C2C47719F57086000E5833 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,23 +294,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56C2C47519F57086000E5833 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				56C2C48019F57086000E5833 /* PeaceAppTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		56C2C47B19F57086000E5833 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 56C2C45F19F57086000E5833 /* PeaceApp */;
-			targetProxy = 56C2C47A19F57086000E5833 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		56C2C46D19F57086000E5833 /* Main.storyboard */ = {
@@ -419,6 +354,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "5fcebf0a-7306-4019-81aa-921825981978";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -441,8 +377,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Appsball Korlatolt Felelossegu Tarsasag (VQXT3TNA73)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Appsball Korlatolt Felelossegu Tarsasag (VQXT3TNA73)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Appsball Korlatolt Felelossegu Tarsasag";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Appsball Korlatolt Felelossegu Tarsasag";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -455,6 +391,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "5fcebf0a-7306-4019-81aa-921825981978";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -465,6 +402,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Miklós Csendes (X9HECT73R7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Miklós Csendes (X9HECT73R7)";
 				INFOPLIST_FILE = PeaceApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -472,6 +411,7 @@
 					"$(PROJECT_DIR)/PeaceApp",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -479,6 +419,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Appsball Korlatolt Felelossegu Tarsasag";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Appsball Korlatolt Felelossegu Tarsasag";
 				INFOPLIST_FILE = PeaceApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -486,40 +428,7 @@
 					"$(PROJECT_DIR)/PeaceApp",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		56C2C48719F57086000E5833 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PeaceAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeaceApp.app/PeaceApp";
-			};
-			name = Debug;
-		};
-		56C2C48819F57086000E5833 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PeaceAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeaceApp.app/PeaceApp";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -540,15 +449,6 @@
 			buildConfigurations = (
 				56C2C48419F57086000E5833 /* Debug */,
 				56C2C48519F57086000E5833 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		56C2C48619F57086000E5833 /* Build configuration list for PBXNativeTarget "PeaceAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				56C2C48719F57086000E5833 /* Debug */,
-				56C2C48819F57086000E5833 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

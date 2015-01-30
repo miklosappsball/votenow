@@ -55,8 +55,13 @@ public class NotificationUtil
 	 
 	private static boolean production = true;
 	private final static String DIR = "WEB-INF/classes";
+	
 	private final static String CERTIFICATE_FILE = "/appsball_votenow.p12";
 	private final static String CERTIFICATE_FILE_DEV = "/appsball_votenow_dev.p12";
+	/*
+	private final static String CERTIFICATE_FILE = "/angelapp.p12";
+	private final static String CERTIFICATE_FILE_DEV = "/angelapp_developer.p12";
+	*/
 	
 	public static InputStream getCertificateFile() throws Exception
 	{
@@ -82,8 +87,8 @@ public class NotificationUtil
 	{
 		production = false;
 		System.out.println(new File("x").getAbsolutePath());
-		// sendPushNotification("123456", "f416fd527aff3c37adaa36c221b4177b33b9e9331ace08842d85486124c314d4", "Test title", "IOSD");
-		sendPushNotification("123456", "f29889c563f070d633b4b6df6072b6eaf45472cd1de49c1db3acd4c8410e23b8", "Test title", "IOS");
+		sendPushNotification("123456", "bd05577b463dc744c6fa8a304f24b85617d5ba8608995515cd551e2077756b9b", "Test title", "IOSD");
+		// sendPushNotification("123456", "f29889c563f070d633b4b6df6072b6eaf45472cd1de49c1db3acd4c8410e23b8", "Test title", "IOS");
 	}
 	
 	private static void sendPushNotification(String code, String device, String title, String devicetype) 

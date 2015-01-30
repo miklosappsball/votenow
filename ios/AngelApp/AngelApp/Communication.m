@@ -258,7 +258,6 @@ static Communication* instance = nil;
 - (void) registration:(NSString*)locale
 {
     // {"FUNCTION":"REGISTER","LOCALE":"hu","DEVICE_ID":"TestDeviceIdJustForMe","DEVICE_TYPE":"Android:_..."}
-    
     NSMutableDictionary* json = [[NSMutableDictionary alloc] init];
     [json setObject:locale forKey:FIELD_LOCALE];
     [json setObject:FUNCTION_REGISTRATION forKey:FIELD_FUNCTION];

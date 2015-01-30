@@ -67,9 +67,10 @@
     imageView.hidden = NO;
     [imageView setImage:image];
     
-    NSString *string = [NSString stringWithFormat:@"Peace text, what i don't know still ... By the way your peace ID: %@", [DeviceUtil getId]];
+    NSString *string = [NSString stringWithFormat:@"I declare my commitment to peace! My Peace ID: %@", [DeviceUtil getId]];
     
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[string, image] applicationActivities:nil];
+    controller.popoverPresentationController.sourceView = imageView;
     controller.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList, UIActivityTypeAirDrop, UIActivityTypePrint];
     [self presentViewController:controller animated:YES completion:nil];
     

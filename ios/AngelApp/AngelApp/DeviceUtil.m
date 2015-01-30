@@ -33,7 +33,12 @@ static NSString* deviceId = NULL;
 
 + (NSString*) deviceType
 {
+#ifdef DEBUG
+    if(DEBUG) return @"IOSD";
+    else return @"IOS";
+#else
     return @"IOS";
+#endif
 }
 
 + (void) setAngelAppId:(NSString*)angelAppId

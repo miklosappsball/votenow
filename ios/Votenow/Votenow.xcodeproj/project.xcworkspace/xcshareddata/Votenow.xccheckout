@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3E98DEF2-6D9D-435E-97EA-97867CC956D3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Votenow</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>47A3BC4CC7EC071D0DDBAB8C737470394C537179</key>
+		<string>ssh://votenow-appsball2.rhcloud.com/~/git/votenow.git/</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios/Votenow/Votenow.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>47A3BC4CC7EC071D0DDBAB8C737470394C537179</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://votenow-appsball2.rhcloud.com/~/git/votenow.git/</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>47A3BC4CC7EC071D0DDBAB8C737470394C537179</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>47A3BC4CC7EC071D0DDBAB8C737470394C537179</string>
+			<key>IDESourceControlWCCName</key>
+			<string>votenow</string>
+		</dict>
+	</array>
+</dict>
+</plist>

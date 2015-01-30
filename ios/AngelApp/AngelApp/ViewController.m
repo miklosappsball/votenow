@@ -13,7 +13,7 @@
 
 #define GAP 10
 
-#define TEST YES
+#define TEST NO
 #define BUTTON_HEIGHT 60
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
@@ -67,6 +67,21 @@
             }
         }
         
+        [self startRegistration];
+    }
+    return self;
+}
+
+- (void)startRegistration0
+{
+    [NSThread sleepForTimeInterval:1];
+    [self performSelectorOnMainThread:@selector(startRegistration) withObject:nil waitUntilDone:YES];
+}
+
+- (void)startRegistration
+{
+    if(![@"NO_DEVICE" isEqualToString:[DeviceUtil deviceId]])
+    {
         COMMUNICATION.registrationCallback = self;
         if([DeviceUtil angelAppId] != nil)
         {
@@ -77,7 +92,10 @@
             [COMMUNICATION registration:@"hu"];
         }
     }
-    return self;
+    else
+    {
+        [self performSelectorInBackground:@selector(startRegistration0) withObject:nil];
+    }
 }
 
 - (void) showInfo
@@ -132,8 +150,8 @@
 - (void) selectId:(UIButton*) sender
 {
     [DeviceUtil setTestAngelId:[NSString stringWithFormat:@"%d", sender.tag]];
-    
     [self presentViewController:[[ChatVC alloc] init] animated:YES completion:nil];
+    [COMMUNICATION login];
 }
 
 - (void) registrationCallbackMethod:(NSDictionary*) dict
@@ -144,12 +162,14 @@
     NSString* time = [dict objectForKey:FIELD_TIMESTAMP];
     [DeviceUtil setTimeStamp:time];
     
+    /*
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSDate* date = [NSDate dateWithTimeIntervalSinceNow:10];
     NSString* str = [df stringFromDate:date];
     [DeviceUtil setTimeStamp:str];
+    */
     
     [COMMUNICATION login];
 }

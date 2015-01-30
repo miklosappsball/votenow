@@ -110,7 +110,7 @@ public class EmailListener  implements ServletContextListener {
 	
 	public static String createEmailCode(String code, String question)
 	{
-		return "<p style=\"font-size:22px;\">Your questionnaire rate code is: <b>"+code+"</b>. Ask people to rate now with this code - within 3 minutes!</p>"
+		return "<p style=\"font-size:22px;\">Your questionnaire vote code is: <b>"+code+"</b>. Ask people to vote now with this code – within the time frame!</p>"
 				+"<p style=\"font-size:16px;\">The question: <b><i>"+question+"</i></b>"
 				+createMessageEnding();
 	}
