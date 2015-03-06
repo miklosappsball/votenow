@@ -101,6 +101,9 @@
             msg = str;
         }
     }
+    
+    NSUTF8StringEncoding
+    
     PushData* pd = [[PushData alloc] initFromDictionary:userInfo];
     pd.msg = msg;
     

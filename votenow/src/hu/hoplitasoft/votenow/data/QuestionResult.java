@@ -93,6 +93,8 @@ public class QuestionResult {
 			ac.choice = getChoices().get(i);
 		}
 		
+		int totalNumber = 0;
+		
 		for(OneAnswer oa : oneAnswers)
 		{
 			boolean addedToComments = false;
@@ -100,6 +102,7 @@ public class QuestionResult {
 			{
 				if(oa.getAnswers().charAt(i) != '0')
 				{
+					totalNumber++;
 					AnswerCollection ac = answerCollection.get(i);
 					ac.number++;
 					if(!anonymous)
@@ -128,8 +131,10 @@ public class QuestionResult {
 		
 		for(AnswerCollection ac: answerCollection)
 		{
-			ac.percentage = String.format("%.2f%%", 100.0 * ac.number / oneAnswers.size());
-			if(oneAnswers.size() == 0) ac.percentage = "-";
+			// ac.percentage = String.format("%.2f%%", 100.0 * ac.number / oneAnswers.size());
+			// if(oneAnswers.size() == 0) ac.percentage = "-";
+			if(totalNumber != 0) ac.percentage = String.format("%.2f%%", 100.0 * ac.number / totalNumber);
+			else ac.percentage = "-";
 		}
 	}
 	

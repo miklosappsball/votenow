@@ -59,7 +59,7 @@ static QueueHandler* instance = nil;
 {
     if(shown)
     {
-        [self addObjectToQueue:pd];
+        [self addPushDataToQueueOrStart:pd];
     }
     else
     {

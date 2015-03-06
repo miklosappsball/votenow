@@ -65,10 +65,10 @@ public class WSTester
 			String rate = "1";
 			for(int i=1; i < array.length();i++) rate += "0";
 			
-			String s = createAnswer(qcode, rate, "Béla", "message by Béla", "IOS", "IOS_DEVICE_ID_1");
-			createAnswer(qcode, "00111", "Andris", "message by Andris", "IOS", "IOS_DEVICE_ID_2");
-			createAnswer(qcode, "00111", "Csilla", "message by Csilla", "IOS", "IOS_DEVICE_ID_3");
-			createAnswer(qcode, rate, "Anna", "message by Anna", "IOS", "IOS_DEVICE_ID_4");
+			String s = createAnswer(qcode, "00111", "Béla", "message by Béla", "IOS", "IOS_DEVICE_ID_1");
+			createAnswer(qcode, "01000", "Andris", "message by Andris", "IOS", "IOS_DEVICE_ID_2");
+			createAnswer(qcode, "10000", "Csilla", "message by Csilla", "IOS", "IOS_DEVICE_ID_3");
+			createAnswer(qcode, "11100", "Anna", "message by Anna", "IOS", "IOS_DEVICE_ID_4");
 			System.out.println(s);
 			System.out.println(getAnswerFromString(s));
 			
