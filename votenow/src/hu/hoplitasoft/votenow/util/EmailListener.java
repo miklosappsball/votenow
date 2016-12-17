@@ -28,11 +28,11 @@ public class EmailListener  implements ServletContextListener {
 	private static String emailTemplate = null;
 	private static String choiceTemplate = null;
 	
-	private static String EMAIL_PORT = "465";
-	private static String EMAIL_HOST = "smtp.zoho.com";
+	private static String EMAIL_PORT = "587";
+	private static String EMAIL_HOST = "smtp.sparkpostmail.com";
 	
-	private static String EMAIL_USERNAME = "emailsender@appsball.com";
-	private static String EMAIL_PASSWORD = "AppEmailer13";
+	private static String EMAIL_USERNAME = "SMTP_Injection";
+	private static String EMAIL_PASSWORD = "5257b29d494314cdb83b8f92c8f77610433b8c0e";
 	
 	/*
 	private static String EMAIL_USERNAME = "konfar.andras@appsball.com";
