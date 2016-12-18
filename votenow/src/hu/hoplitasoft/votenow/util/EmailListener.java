@@ -29,10 +29,14 @@ public class EmailListener  implements ServletContextListener {
 	
 	private static String EMAIL_SENDER = "emailsender@appsball.com";
 	private static String EMAIL_PORT = "587";
-	private static String EMAIL_HOST = "smtp.sparkpostmail.com";
-	
-	private static String EMAIL_USERNAME = "SMTP_Injection";
+/*	private static String EMAIL_HOST = "smtp.sparkpostmail.com";
+*/	
+	private static String EMAIL_HOST = "smtp.sendgrid.net";
+/*	private static String EMAIL_USERNAME = "SMTP_Injection";
 	private static String EMAIL_PASSWORD = "5257b29d494314cdb83b8f92c8f77610433b8c0e";
+*/
+	private static String EMAIL_USERNAME = "apikey";
+	private static String EMAIL_PASSWORD = "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";
 	
 	/*
 	private static String EMAIL_USERNAME = "konfar.andras@appsball.com";
