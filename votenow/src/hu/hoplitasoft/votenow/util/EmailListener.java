@@ -68,6 +68,7 @@ public class EmailListener  implements ServletContextListener {
 		{
 			public void run() {
 				Properties props = new Properties();
+				Logger.info("///////// Itt vagyok! ///////////");
 				props.put("mail.smtp.host", EMAIL_HOST);
 				props.put("mail.smtp.socketFactory.port", EMAIL_PORT);
 				props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
