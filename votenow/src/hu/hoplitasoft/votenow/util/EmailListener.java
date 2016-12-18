@@ -27,7 +27,7 @@ public class EmailListener  implements ServletContextListener {
 	private static String emailTemplate = null;
 	private static String choiceTemplate = null;
 	
-	private static String EMAIL_SENDER = "emailsender@appsball.com"
+	private static String EMAIL_SENDER = "emailsender@appsball.com";
 	private static String EMAIL_PORT = "587";
 	private static String EMAIL_HOST = "smtp.sparkpostmail.com";
 	
