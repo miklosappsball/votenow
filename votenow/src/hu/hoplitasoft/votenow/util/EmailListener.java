@@ -97,7 +97,7 @@ public class EmailListener  implements ServletContextListener {
 					message.setRecipients(Message.RecipientType.BCC, mi);
 					
 					message.setFrom(new InternetAddress(EMAIL_SENDER, "Vote Now"));
-					System.out.println("Email sender"+EMAIL_SENDER);
+					Logger.info("Email sender"+EMAIL_SENDER);
 					message.setSubject(subject);
 					message.setContent(content,"text/html; charset=UTF-8");
 					Transport.send(message);
