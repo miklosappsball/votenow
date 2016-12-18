@@ -1,6 +1,5 @@
 package hu.hoplitasoft.votenow.util;
 
-
 import hu.hoplitasoft.votenow.QuestionCloser;
 import hu.hoplitasoft.votenow.data.QuestionResult;
 
