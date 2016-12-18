@@ -68,7 +68,8 @@ public class EmailListener  implements ServletContextListener {
 				props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 				props.put("mail.smtp.auth", "true");
 				props.put("mail.smtp.port", EMAIL_PORT);
-
+				props.put("mail.smtp.starttls.enable", "true");
+				
 				Session session = Session.getDefaultInstance(props,
 						new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
